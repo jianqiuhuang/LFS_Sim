@@ -5,6 +5,7 @@
 #include <string>
 #include <vector>
 #include <map>
+#include <queue>
 
 struct fileInfo{
 	//Specify which segment contains iNode for this file
@@ -23,19 +24,21 @@ class LFT_Sim{
 		void readFile(int fileID, int blockNumber);
 		void writeFile(int fileID);
 		void removeFile(int fileID);
+
 		//Perform garbage collection on segment with least live blocks
 		void clean();
 		//Called after every writeFile and createFile operation
 		//Return true if the percentage of non-empty segments reaches 80%
 		//If true, how many segments shoul be cleaned?
 		bool requireCleaning();
+
 		std::vector<int> log;
 		std::map<int, fileInfo> files;
-
+		std::queue<int> availableSegments;
 		int diskSize;
 		int fileSize;
-		int segmentSize;
-		
+		int segmentSize;	
+		int head;
 };
 
 #endif
