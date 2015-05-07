@@ -4,6 +4,7 @@ LFS_Sim::LFS_Sim(int diskSize, int segmentSize, int fileSize){
 	diskSize = diskSize;
 	segmentSize = segmentSize;
 	fileSize = fileSize;
+	bufferCount = segmentSize;
 	//Initialize log vector
 	//Assume diskSize is divisible by segmentSize
 	log.resize( (diskSize/segmentSize), segmentSize);
@@ -11,6 +12,7 @@ LFS_Sim::LFS_Sim(int diskSize, int segmentSize, int fileSize){
 	for(int i = 0; i < (int) log.size(); i++){
 		availableSegments.push_back(i);
 	}
+	head = availableSements.front();
 }
 
 //True -- perform garbage collecting
@@ -31,23 +33,38 @@ void LFS_Sim::clean(){
 			victim = i;
 		}
 	}
+	if(victim == -1){
+		std::cerr << "Error: victim segement: -1" << std::endl;
+		exit(1);
+	}
 	//set the victim segment to empty
 	log[victim] = segmentSize;
 	//Add the emptied segment to available list
 	availableSegment.push_back(victim);
 }
+
 //After file creation, an iNode is assign to the file
 void LFS_Sim::createFile(int fileID){
 	if(requireClean())
 		clean();
-	//Move read/write head to the empty segment
-	head = availableSegment.front();
-	availableSegment.pop();
-
-	fileInfo tmp;
-	tmp.iNodeLocation = head;
-
-	log[head]--;
 	
-	
+	struct fileInfo tmp;
+	//Current segment is not full
+	if(log[head] > 0){
+		log[head]--;
+		tmp.iNodeLocation = head;
+	}
+	//Find new empty segment
+	else{
+		head = availableSegment.front();
+		availableSegment.pop();
+		log[head]--;
+		tmp.iNodeLocation = head;
+	}
+	files.insert(std::pair<int, struct fileInfo>(fileID, tmp));
+}
+
+void LFS_Sim::writeFile(int blockNumber){
+
+
 }

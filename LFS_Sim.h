@@ -22,9 +22,9 @@ class LFT_Sim{
 	private:
 		void createFile(int fileID);
 		void readFile(int fileID, int blockNumber);
-		void writeFile(int fileID);
+		void writeFile(int fileID, int blockNumber);
 		void removeFile(int fileID);
-
+		
 		//Perform garbage collection on segment with least live blocks
 		void clean();
 		//Called after every writeFile and createFile operation
