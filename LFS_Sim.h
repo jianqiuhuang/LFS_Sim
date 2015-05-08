@@ -2,26 +2,28 @@
 #define LFS_SIM_H
 
 #include <iostream>
+#include <sstream>
 #include <string>
 #include <vector>
 #include <map>
 #include <queue>
-
+#include <stdlib.h>
+#include <fstream>
 struct fileInfo{
 	//A collection of indexes that specify the location of all data blocks and iNode belong to this file
 	//(block number, segment number)
 	std::vector<int> dataBlockLocation;		
 };
 
-class LFT_Sim{
+class LFS_Sim{
 	public:
-		LFT_Sim(int diskSize, int segmentSize, int fileSize);
+		LFS_Sim(int diskSize, int segmentSize);
 		//return the the total seek distance
-		int simulate();
+		void simulate(std::string fileName);
 	private:
 		void createFile(int fileID);
 		void readFile(int fileID, int blockNumber);
-		void writeFile(int fileID);
+		void writeFile(int fileID, int blockNumber);
 		void removeFile(int fileID);
 
 		//Perform garbage collection on segment with least live blocks
@@ -29,7 +31,7 @@ class LFT_Sim{
 		//Called after every writeFile and createFile operation
 		//Return true if the percentage of non-empty segments reaches 80%
 		//If true, how many segments shoul be cleaned?
-		bool requireCleaning();
+		bool requireClean();
 
 		std::vector<int> log;
 		std::map<int, fileInfo> files;
