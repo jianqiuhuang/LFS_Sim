@@ -47,10 +47,12 @@ void LFS_Sim::simulate(std::string fileName){
 	//Temporary print statement
 	if(DEBUG) std::cout << "seek count: " << seekCount << std::endl;
 }
+
 //True -- perform garbage collecting
 bool LFS_Sim::requireClean(){
 	//less than 20% of total segments are empty
-	if( (int)availableSegments.size() < (int) (segmentSize * 0.2)){
+	if(DEBUG) std::cerr << "in requireClean: availableSegments has " << availableSegments.size() << " segments available\n threshold at: " << (log.size()* 0.2) << std::endl;
+	if( (int)availableSegments.size() <= (int) ( log.size() * 0.2)){
 		if(DEBUG) std::cerr << "threshold reached" << std::endl;
 		return true;
 	}
@@ -58,31 +60,35 @@ bool LFS_Sim::requireClean(){
 }	
 
 void LFS_Sim::clean(){
-/*	
-	seekCount++;
-
-	int max = -1;
-	int victim = -1;
-
-	for(int i = 0; i < (int) log.size(); i++){
-		
-
-		//Pick the segement with fewest live block, and also makesure not to pick the empty segment
-		
-		if(log[i] > max && log[i] != segmentSize){
-			max = log[i];
-			victim = i;
+	//Clean 10% of the total segments
+	int numberOfClean = (int) (diskSize/segmentSize) * 0.1;
+	if(DEBUG) std::cerr << "Start cleaning...number of segments to be clean: " <<  numberOfClean << std::endl;
+	for(int clean = 0; clean < numberOfClean; clean++){
+		int max = -1, victim = -1;
+		seekCount++;
+		for(int i = 0; i < (int) log.size(); i++){
+			//Pick the segement has fewest live block, and also makesure not to pick the empty segment
+			if(log[i] > max && log[i] != segmentSize){
+				max = log[i];
+				victim = i;
+			}
 		}
-
+		//!!!!!!!!!!!!!!!!!!!!
+		//Move live blocks to the end of the log
+		for(std::map<int, struct fileInfo>::iterator it = files.begin(); it != files.end(); it++){
+			for(int i = 0; i < (int) (it->second).dataBlockLocation.size(); i++){
+				//If the file has a data block in the victim segment
+				if( (it->second).dataBlockLocation[i] == victim ){
+					writeFile(it->first, i);
+				}			
+			}
+		}
+		//set the victim segment to empty
+		log[victim] = segmentSize;
+		//Add the emptied segment to available list
+		availableSegments.push(victim);
+		if(DEBUG) std::cerr << "after cleaning, segement: " << victim << " is available now" << std::endl;
 	}
-	//!!!!!!!!!!!!!!!!!!!!
-	//Move live blocks to the end of the log
-		
-	//set the victim segment to empty
-	log[victim] = segmentSize;
-	//Add the emptied segment to available list
-	availableSegments.push(victim);
-*/
 }
 
 //After file creation, an iNode is assign to the file
@@ -92,9 +98,14 @@ void LFS_Sim::createFile(int fileID){
 	
 	//Segment is full
 	if(log[head] <= 0){
-		//Move read/write head to the empty segment
-		head = availableSegments.front();
-		availableSegments.pop();
+		if(!availableSegments.empty()){
+			//Move read/write head to the empty segment
+			head = availableSegments.front();
+			availableSegments.pop();
+		}else{
+			std::cerr << "availableSegments has no additional empty segments, this error should not occur" << std::endl;
+			exit(1);
+		}
 	}
 	
 	fileInfo tmp;
@@ -132,9 +143,14 @@ void LFS_Sim::writeFile(int fileID, int blockNumber){
         
         //Segment is full
         if(log[head] <= 0){
-                //Move read/write head to the empty segment
-                head = availableSegments.front();
-                availableSegments.pop();
+		if(!availableSegments.empty()){
+                	//Move read/write head to the empty segment
+        	        head = availableSegments.front();	
+	                availableSegments.pop();
+		}else{
+			std::cerr << "availableSegments has no additional empty segments, this error should not occur" << std::endl;
+			exit(1);
+		}
         }
 
 	std::map<int, struct fileInfo>::iterator it;
