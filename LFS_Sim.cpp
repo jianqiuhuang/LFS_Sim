@@ -154,5 +154,6 @@ void LFS_Sim::removeFile(int fileID){
 	for(int i = 0; i < (int) (it->second).dataBlockLocation.size(); i++){
 		log[(it->second).dataBlockLocation[i]]++;
 	}
+	files.erase(it);
 }
 
