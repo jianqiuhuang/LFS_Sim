@@ -1,5 +1,5 @@
 #include "LFS_Sim.h"
-#define DEBUG 1 
+#define DEBUG 0 
 LFS_Sim::LFS_Sim(int diskSize, int segmentSize){
 	seekCount = 0;
 	readCount = 0;
@@ -48,9 +48,9 @@ void LFS_Sim::simulate(std::string fileName){
         }
 	inFile.close();
 	//Temporary print statement
-	if(DEBUG){
-		std::cout << "seek count: " << seekCount << "\n number of read: " << readCount << "\n number of write: " << writeCount << std::endl;
-	}
+		std::cout << "seek count: " << seekCount << "\nnumber of read: " << readCount << "\nnumber of write: " << writeCount << std::endl;
+		std::cout << "seek percentage: " << ((double) seekCount) / (readCount + writeCount) * 100 << "%" << std::endl;
+
 }
 
 //True -- perform garbage collecting
