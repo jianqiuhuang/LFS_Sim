@@ -1,5 +1,5 @@
 #include "LFS_Sim.h"
-#define DEBUG 1
+#define DEBUG 0
 LFS_Sim::LFS_Sim(int diskSize, int segmentSize){
 	seekCount = 0;
 	readCount = 0;
@@ -151,7 +151,7 @@ void LFS_Sim::createFile(int fileID){
 void LFS_Sim::readFile(int fileID, int blockNumber){
 	
 	seekCount++;
-	
+	readCount++;	
 	std::map<int, struct fileInfo>::iterator it;
 		
 	//Error checking
@@ -171,6 +171,7 @@ void LFS_Sim::readFile(int fileID, int blockNumber){
 }
 
 void LFS_Sim::writeFile(int fileID, int blockNumber){
+	writeCount++;
 	if(requireClean())
                 clean();
         
