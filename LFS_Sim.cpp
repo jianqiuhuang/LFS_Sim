@@ -1,11 +1,11 @@
 #include "LFS_Sim.h"
-#define DEBUG 0
+#define DEBUG 1 
 LFS_Sim::LFS_Sim(int diskSize, int segmentSize){
 	seekCount = 0;
 	readCount = 0;
 	writeCount = 0;
-	diskSize = diskSize;
-	segmentSize = segmentSize;
+	LFS_Sim::diskSize = diskSize;
+	LFS_Sim::segmentSize = segmentSize;
 	//Initialize log vector
 	//Assume diskSize is divisible by segmentSize
 	log.resize( (int)(diskSize/segmentSize), segmentSize);
@@ -121,6 +121,7 @@ void LFS_Sim::debug(){
 }
 //After file creation, an iNode is assign to the file
 void LFS_Sim::createFile(int fileID){
+	writeCount++;
 	if(requireClean())
 		clean();
 	
@@ -192,8 +193,13 @@ void LFS_Sim::writeFile(int fileID, int blockNumber){
 	it = files.find(fileID);
 	
 	//Block already exists
-	if( (int)(it->second).dataBlockLocation.size() > blockNumber)
-       		(it->second).dataBlockLocation[blockNumber] = head;
+	if( (int)(it->second).dataBlockLocation.size() > blockNumber){
+       		log[(it->second).dataBlockLocation[blockNumber]]++;
+       		if(log[(it->second).dataBlockLocation[blockNumber]] == segmentSize){
+			availableSegments.push( (it->second).dataBlockLocation[blockNumber] );
+		}
+		(it->second).dataBlockLocation[blockNumber] = head;
+	}
 	//Block not in disk
 	else
        		(it->second).dataBlockLocation.push_back(head);
@@ -211,6 +217,10 @@ void LFS_Sim::removeFile(int fileID){
 	
 	for(int i = 0; i < (int) (it->second).dataBlockLocation.size(); i++){
 		log[(it->second).dataBlockLocation[i]]++;
+		if( !(log[(it->second).dataBlockLocation[i]] == head && log[head] == segmentSize)){
+			if(log[(it->second).dataBlockLocation[i]] == segmentSize)
+				availableSegments.push( (it->second).dataBlockLocation[i] );
+		}
 	}
 	files.erase(it);
 	if(DEBUG){
