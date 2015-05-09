@@ -107,8 +107,8 @@ int main(int argc, char **argv){
     }
     
     // choose a file
-    int new_fsize = -1;
-    int new_fid = -1;
+    int new_fsize = 0;
+    int new_fid = 0;
     if(!aliveFiles.empty()){
       std::random_shuffle(aliveFiles.begin(), aliveFiles.end());
       new_fid = aliveFiles.back().id;
@@ -121,10 +121,12 @@ int main(int argc, char **argv){
     // write
     if( (int)(rng() % 100) < writeRatio ){
       // writeRatio% chance to write
-      int block = 1 + (rng() % new_fsize);
+      int block = 1 + (int)(rng() % new_fsize);
+      if(DEBUG) outfile << "GEN about to write: new_fsize=" << new_fsize << std::endl;
       File newFile;
       if(block == new_fsize){
 	// writing new block
+	if(DEBUG) outfile << "GEN writing new block" << std::endl;
 	diskSize++;
 	new_fsize++;
 	newFile.id = new_fid;
@@ -146,7 +148,7 @@ int main(int argc, char **argv){
       if( (int)(rng() % 100) < (100-writeRatio) ){
 	// (100-writeRatio)% chance to read
 	if(new_fsize > 1){
-	  int block = 1 + (rng() % (new_fsize-1)); 
+	  int block = 1 + (int)(rng() % (new_fsize-1)); 
 	  outfile << read(new_fid, block) << std::endl;
 	}
       }
