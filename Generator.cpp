@@ -58,10 +58,10 @@ int main(int argc, char **argv){
   
   // extract command line arguments
   std::stringstream ss;
-  int diskCapacity; ss << argv[1]; ss >> diskCapacity;
-  int writeRatio=10; ss << argv[2]; ss >> writeRatio;
+  int diskCapacity = atoi(argv[1]);// ss << argv[1]; ss >> diskCapacity;
+  int writeRatio = atoi(argv[2]);// ss << argv[2]; ss >> writeRatio;
   char *ofileName = argv[3];
-  
+
   // validate writeRatio
   if( (writeRatio < 0) || (writeRatio > 100) ){
     std::cerr << argv[0] << ": writeRatio out of range [0,100]: " << writeRatio << std::endl;
@@ -76,7 +76,7 @@ int main(int argc, char **argv){
   std::minstd_rand rng(time.time_since_epoch().count());
 
   /***** generate simluation sequence *****/
-  if(DEBUG) std::cerr << argv[0] << ": generating...diskCap=" << diskCapacity << std::endl;
+  if(DEBUG) std::cerr << argv[0] << ": generating...diskCap=" << diskCapacity << " ratio=" << writeRatio << std::endl;
   int diskSize = 0;
   std::vector<File> aliveFiles;
   int new_fid = 1;
@@ -143,18 +143,20 @@ int main(int argc, char **argv){
       outfile << end(new_fid) << std::endl;
     }
     else{
-      // (100-writeRatio)% chance to read
-      if(new_fsize > 1){
-	int block = 1 + (rng() % (new_fsize-1)); 
-	outfile << read(new_fid, block) << std::endl;
+      if( (int)(rng() % 100) < (100-writeRatio) ){
+	// (100-writeRatio)% chance to read
+	if(new_fsize > 1){
+	  int block = 1 + (rng() % (new_fsize-1)); 
+	  outfile << read(new_fid, block) << std::endl;
+	}
       }
-    }
+    }   
     
   } while(diskSize < diskCapacity);
   
   // check that all files have ended, if not then clean up
   while(!aliveFiles.empty()){
-    f = aliveFiles.back();
+    new_fid = aliveFiles.back().id;
     aliveFiles.pop_back();
     outfile << end(new_fid) << std::endl;
   }
