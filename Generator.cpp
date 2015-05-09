@@ -76,6 +76,7 @@ int main(int argc, char **argv){
   std::minstd_rand rng(time.time_since_epoch().count());
 
   /***** generate simluation sequence *****/
+  if(DEBUG) std::cerr << argv[0] << ": generating...diskCap=" << diskCapacity << std::endl;
   int diskSize = 0;
   std::vector<File> aliveFiles;
   int new_fid = 1;
@@ -106,21 +107,26 @@ int main(int argc, char **argv){
     }
     
     // choose a file
+    int new_fsize = -1;
+    int new_fid = -1;
     if(!aliveFiles.empty()){
       std::random_shuffle(aliveFiles.begin(), aliveFiles.end());
-      f = aliveFiles.back();
+      new_fid = aliveFiles.back().id;
+      new_fsize = aliveFiles.back().size;
+    }
+    else{
+      break;
     }
     
     // write
     if( (int)(rng() % 100) < writeRatio ){
       // writeRatio% chance to write
-      int block = 1 + (rng() % f.size);
+      int block = 1 + (rng() % new_fsize);
       File newFile;
-      if(block == f.size){
+      if(block == new_fsize){
 	// writing new block
 	diskSize++;
-	int new_fsize = f.size + 1;
-	int new_fid = f.id;
+	new_fsize++;
 	newFile.id = new_fid;
 	newFile.size = new_fsize;
 	aliveFiles.pop_back();
@@ -134,13 +140,13 @@ int main(int argc, char **argv){
     if(rng() % 100 == 0){
       // end
       aliveFiles.pop_back();
-      outfile << end(f.id) << std::endl;
+      outfile << end(new_fid) << std::endl;
     }
     else{
       // (100-writeRatio)% chance to read
-      if(f.size > 1){
-	int block = 1 + (rng() % (f.size-1)); 
-	outfile << read(f.id, block) << std::endl;
+      if(new_fsize > 1){
+	int block = 1 + (rng() % (new_fsize-1)); 
+	outfile << read(new_fid, block) << std::endl;
       }
     }
     
@@ -150,7 +156,7 @@ int main(int argc, char **argv){
   while(!aliveFiles.empty()){
     f = aliveFiles.back();
     aliveFiles.pop_back();
-    outfile << end(f.id) << std::endl;
+    outfile << end(new_fid) << std::endl;
   }
   
   return 0;
