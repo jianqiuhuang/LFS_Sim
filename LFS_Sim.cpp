@@ -232,5 +232,6 @@ void LFS_Sim::removeFile(int fileID){
 		std::cerr << "after removeFile fileID: " << fileID << std::endl;
 		debug();
 	}
+	files.erase(it);
 }
 
