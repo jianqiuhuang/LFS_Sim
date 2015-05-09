@@ -1,0 +1,27 @@
+#!/bin/bash
+
+#
+# Bash shell command to run multiple trace files at once
+#
+
+SIM="./LFS-Sim"
+GEN="./GenLFS-Sim"
+
+if [ "$#" -eq 6 ]; then
+	if [ -e "$SIM" ]; then
+		if [ -e "$GEN" ]; then
+			# Create file or empty the content if the file already exists
+			echo -n "" > "$6"
+        		"$GEN" "$1" "$2" trace_file.txt
+			seq "$3" "$5" "$4" | xargs -Iz "$SIM" "$1" z trace_file.txt >> "$6"
+		else
+			echo "$0: $GEN does not exist, do -- make gen"
+		fi
+	else
+                echo "$0: $SIM does not exist, do -- make"
+                exit 1
+        fi
+else
+        echo "Usage: $0 <disk-size> <write-ratio [0-100]> <minimum-segment-size> <maximum-segment-size> <increment> <output-file> "
+        exit 1
+fi

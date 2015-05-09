@@ -1,0 +1,600 @@
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 10------------
+seek count: 8876
+number of read: 7376
+number of write: 19587
+seek percentage: 32.9192%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 20------------
+seek count: 8226
+number of read: 7376
+number of write: 19647
+seek percentage: 30.4407%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 30------------
+seek count: 8003
+number of read: 7376
+number of write: 19736
+seek percentage: 29.5183%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 40------------
+seek count: 7876
+number of read: 7376
+number of write: 19798
+seek percentage: 28.9836%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 50------------
+seek count: 7776
+number of read: 7376
+number of write: 19921
+seek percentage: 28.4866%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 60------------
+seek count: 7744
+number of read: 7376
+number of write: 19941
+seek percentage: 28.3486%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 70------------
+seek count: 7684
+number of read: 7376
+number of write: 20071
+seek percentage: 27.9958%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 80------------
+seek count: 7652
+number of read: 7376
+number of write: 20148
+seek percentage: 27.8012%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 90------------
+seek count: 7629
+number of read: 7376
+number of write: 20395
+seek percentage: 27.4711%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 100------------
+seek count: 7616
+number of read: 7376
+number of write: 20379
+seek percentage: 27.4401%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 110------------
+seek count: 7583
+number of read: 7376
+number of write: 20543
+seek percentage: 27.1607%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 120------------
+seek count: 7576
+number of read: 7376
+number of write: 20748
+seek percentage: 26.9378%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 130------------
+seek count: 7586
+number of read: 7376
+number of write: 20843
+seek percentage: 26.8826%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 140------------
+seek count: 7537
+number of read: 7376
+number of write: 20667
+seek percentage: 26.8766%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 150------------
+seek count: 7556
+number of read: 7376
+number of write: 21061
+seek percentage: 26.571%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 160------------
+seek count: 7520
+number of read: 7376
+number of write: 20726
+seek percentage: 26.7597%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 170------------
+seek count: 7556
+number of read: 7376
+number of write: 21839
+seek percentage: 25.8634%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 180------------
+seek count: 7551
+number of read: 7376
+number of write: 21615
+seek percentage: 26.046%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 190------------
+seek count: 7496
+number of read: 7376
+number of write: 21090
+seek percentage: 26.3332%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 200------------
+seek count: 7506
+number of read: 7376
+number of write: 21332
+seek percentage: 26.146%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 210------------
+seek count: 7536
+number of read: 7376
+number of write: 22432
+seek percentage: 25.2818%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 220------------
+seek count: 7528
+number of read: 7376
+number of write: 22412
+seek percentage: 25.2719%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 230------------
+seek count: 7476
+number of read: 7376
+number of write: 22037
+seek percentage: 25.4173%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 240------------
+seek count: 7472
+number of read: 7376
+number of write: 21822
+seek percentage: 25.5908%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 250------------
+seek count: 7472
+number of read: 7376
+number of write: 21571
+seek percentage: 25.8127%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 260------------
+seek count: 7490
+number of read: 7376
+number of write: 23035
+seek percentage: 24.6292%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 270------------
+seek count: 7502
+number of read: 7376
+number of write: 22377
+seek percentage: 25.2143%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 280------------
+seek count: 7490
+number of read: 7376
+number of write: 22888
+seek percentage: 24.7489%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 290------------
+seek count: 7463
+number of read: 7376
+number of write: 23053
+seek percentage: 24.5259%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 300------------
+seek count: 7457
+number of read: 7376
+number of write: 22885
+seek percentage: 24.6423%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 310------------
+seek count: 7454
+number of read: 7376
+number of write: 23137
+seek percentage: 24.4289%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 320------------
+seek count: 7457
+number of read: 7376
+number of write: 22948
+seek percentage: 24.5911%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 330------------
+seek count: 7454
+number of read: 7376
+number of write: 23063
+seek percentage: 24.4883%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 340------------
+seek count: 7420
+number of read: 7376
+number of write: 23322
+seek percentage: 24.171%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 350------------
+seek count: 7420
+number of read: 7376
+number of write: 23492
+seek percentage: 24.0378%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 360------------
+seek count: 7416
+number of read: 7376
+number of write: 22858
+seek percentage: 24.5287%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 370------------
+seek count: 7416
+number of read: 7376
+number of write: 22843
+seek percentage: 24.5409%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 380------------
+seek count: 7444
+number of read: 7376
+number of write: 24249
+seek percentage: 23.5383%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 390------------
+seek count: 7416
+number of read: 7376
+number of write: 23096
+seek percentage: 24.3371%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 400------------
+seek count: 7438
+number of read: 7376
+number of write: 23892
+seek percentage: 23.7879%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 410------------
+seek count: 7446
+number of read: 7376
+number of write: 26232
+seek percentage: 22.1554%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 420------------
+seek count: 7440
+number of read: 7376
+number of write: 25564
+seek percentage: 22.5865%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 430------------
+seek count: 7444
+number of read: 7376
+number of write: 25662
+seek percentage: 22.5316%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 440------------
+seek count: 7436
+number of read: 7376
+number of write: 25637
+seek percentage: 22.5245%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 450------------
+seek count: 7434
+number of read: 7376
+number of write: 25437
+seek percentage: 22.6557%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 460------------
+seek count: 7436
+number of read: 7376
+number of write: 25864
+seek percentage: 22.3706%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 470------------
+seek count: 7434
+number of read: 7376
+number of write: 25953
+seek percentage: 22.3049%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 480------------
+seek count: 7430
+number of read: 7376
+number of write: 25349
+seek percentage: 22.7044%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 490------------
+seek count: 7434
+number of read: 7376
+number of write: 25894
+seek percentage: 22.3445%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 500------------
+seek count: 7430
+number of read: 7376
+number of write: 25521
+seek percentage: 22.5856%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 510------------
+seek count: 7506
+number of read: 7376
+number of write: 53289
+seek percentage: 12.3729%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 520------------
+seek count: 7481
+number of read: 7376
+number of write: 45579
+seek percentage: 14.1271%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 530------------
+seek count: 7496
+number of read: 7376
+number of write: 52682
+seek percentage: 12.4813%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 540------------
+seek count: 7483
+number of read: 7376
+number of write: 49461
+seek percentage: 13.1657%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 550------------
+seek count: 7483
+number of read: 7376
+number of write: 46430
+seek percentage: 13.9074%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 560------------
+seek count: 7476
+number of read: 7376
+number of write: 49556
+seek percentage: 13.1315%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 570------------
+seek count: 7482
+number of read: 7376
+number of write: 48287
+seek percentage: 13.4416%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 580------------
+seek count: 7451
+number of read: 7376
+number of write: 41440
+seek percentage: 15.2634%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 590------------
+seek count: 7522
+number of read: 7376
+number of write: 68498
+seek percentage: 9.9138%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 600------------
+seek count: 7475
+number of read: 7376
+number of write: 50107
+seek percentage: 13.0038%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 610------------
+seek count: 7461
+number of read: 7376
+number of write: 46718
+seek percentage: 13.7927%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 620------------
+seek count: 7451
+number of read: 7376
+number of write: 44535
+seek percentage: 14.3534%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 630------------
+seek count: 7461
+number of read: 7376
+number of write: 48603
+seek percentage: 13.3282%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 640------------
+seek count: 7490
+number of read: 7376
+number of write: 60672
+seek percentage: 11.0069%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 650------------
+seek count: 7459
+number of read: 7376
+number of write: 49872
+seek percentage: 13.0293%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 660------------
+seek count: 7470
+number of read: 7376
+number of write: 51641
+seek percentage: 12.6574%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 670------------
+seek count: 7450
+number of read: 7376
+number of write: 49093
+seek percentage: 13.1931%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 680------------
+seek count: 7446
+number of read: 7376
+number of write: 45505
+seek percentage: 14.0807%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 690------------
+seek count: 7456
+number of read: 7376
+number of write: 50064
+seek percentage: 12.9805%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 700------------
+seek count: 7421
+number of read: 7376
+number of write: 36851
+seek percentage: 16.7793%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 710------------
+seek count: 7427
+number of read: 7376
+number of write: 39940
+seek percentage: 15.6966%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 720------------
+seek count: 7423
+number of read: 7376
+number of write: 38635
+seek percentage: 16.1331%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 730------------
+seek count: 7421
+number of read: 7376
+number of write: 38752
+seek percentage: 16.0878%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 740------------
+seek count: 7435
+number of read: 7376
+number of write: 44702
+seek percentage: 14.2767%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 750------------
+seek count: 7437
+number of read: 7376
+number of write: 45732
+seek percentage: 14.0035%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 760------------
+seek count: 7418
+number of read: 7376
+number of write: 37175
+seek percentage: 16.6506%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 770------------
+seek count: 7446
+number of read: 7376
+number of write: 50912
+seek percentage: 12.7745%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 780------------
+seek count: 7451
+number of read: 7376
+number of write: 53607
+seek percentage: 12.2182%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 790------------
+seek count: 7440
+number of read: 7376
+number of write: 46576
+seek percentage: 13.79%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 800------------
+seek count: 7427
+number of read: 7376
+number of write: 42411
+seek percentage: 14.9175%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 810------------
+seek count: 7422
+number of read: 7376
+number of write: 40897
+seek percentage: 15.3751%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 820------------
+seek count: 7441
+number of read: 7376
+number of write: 50422
+seek percentage: 12.8741%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 830------------
+seek count: 7419
+number of read: 7376
+number of write: 37539
+seek percentage: 16.5179%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 840------------
+seek count: 7430
+number of read: 7376
+number of write: 46272
+seek percentage: 13.8495%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 850------------
+seek count: 7430
+number of read: 7376
+number of write: 45649
+seek percentage: 14.0123%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 860------------
+seek count: 7413
+number of read: 7376
+number of write: 36868
+seek percentage: 16.7548%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 870------------
+seek count: 7413
+number of read: 7376
+number of write: 36828
+seek percentage: 16.77%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 880------------
+seek count: 7437
+number of read: 7376
+number of write: 47350
+seek percentage: 13.5895%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 890------------
+seek count: 7419
+number of read: 7376
+number of write: 41092
+seek percentage: 15.307%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 900------------
+seek count: 7411
+number of read: 7376
+number of write: 37043
+seek percentage: 16.6843%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 910------------
+seek count: 7423
+number of read: 7376
+number of write: 44609
+seek percentage: 14.2791%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 920------------
+seek count: 7425
+number of read: 7376
+number of write: 46451
+seek percentage: 13.7942%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 930------------
+seek count: 7413
+number of read: 7376
+number of write: 39840
+seek percentage: 15.7002%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 940------------
+seek count: 7436
+number of read: 7376
+number of write: 55826
+seek percentage: 11.7655%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 950------------
+seek count: 7440
+number of read: 7376
+number of write: 56155
+seek percentage: 11.7108%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 960------------
+seek count: 7408
+number of read: 7376
+number of write: 36264
+seek percentage: 16.9753%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 970------------
+seek count: 7408
+number of read: 7376
+number of write: 36409
+seek percentage: 16.919%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 980------------
+seek count: 7408
+number of read: 7376
+number of write: 36458
+seek percentage: 16.9001%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 990------------
+seek count: 7414
+number of read: 7376
+number of write: 39520
+seek percentage: 15.8095%
+*************Simulating trace_file.txt***************
+-------------Disk size: 10000, segment size: 1000------------
+seek count: 7414
+number of read: 7376
+number of write: 39518
+seek percentage: 15.8101%
