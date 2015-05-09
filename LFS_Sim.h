@@ -1,4 +1,5 @@
 #ifndef LFS_SIM_H
+
 #define LFS_SIM_H
 
 #include <iostream>
@@ -25,7 +26,7 @@ class LFS_Sim{
 		void readFile(int fileID, int blockNumber);
 		void writeFile(int fileID, int blockNumber);
 		void removeFile(int fileID);
-
+		void debug();
 		//Perform garbage collection on segment with least live blocks
 		void clean();
 		//Called after every writeFile and createFile operation
@@ -37,11 +38,10 @@ class LFS_Sim{
 		std::map<int, fileInfo> files;
 		std::queue<int> availableSegments;
 		int diskSize;
-		int fileSize;
 		int segmentSize;	
 		int head;
 	
-		int seekCount;
+		int seekCount, readCount, writeCount;
 };
 
 #endif
