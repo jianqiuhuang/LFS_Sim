@@ -111,13 +111,12 @@ int main(int argc, char **argv){
     int new_fid = 0;
     if(!aliveFiles.empty()){
       std::random_shuffle(aliveFiles.begin(), aliveFiles.end());
-      new_fid = aliveFiles.back().id;
-      new_fsize = aliveFiles.back().size;
+      new_fid = (aliveFiles.back()).id;
+      new_fsize = (aliveFiles.back()).size;
     }
     else{
       break;
     }
-    
     // write
     if( (int)(rng() % 100) < writeRatio ){
       // writeRatio% chance to write
@@ -133,6 +132,9 @@ int main(int argc, char **argv){
 	newFile.size = new_fsize;
 	aliveFiles.pop_back();
 	aliveFiles.push_back(newFile);
+      }else{
+	newFile.id = new_fid;
+	newFile.size = new_fsize;
       }
       outfile << write(newFile.id, block) << std::endl;
       continue;
@@ -153,15 +155,14 @@ int main(int argc, char **argv){
 	}
       }
     }   
-    
   } while(diskSize < diskCapacity);
   
   // check that all files have ended, if not then clean up
   while(!aliveFiles.empty()){
-    new_fid = aliveFiles.back().id;
+    new_fid = (aliveFiles.back()).id;
     aliveFiles.pop_back();
     outfile << end(new_fid) << std::endl;
   }
-  
+  outfile.close(); 
   return 0;
 }
