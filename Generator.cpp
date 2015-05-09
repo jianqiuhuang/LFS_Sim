@@ -7,7 +7,7 @@
 #include <algorithm>
 #include <vector>
 
-#define DEBUG 1 // 1 to turn debug on
+#define DEBUG 0 // 1 to turn debug on
 
 typedef struct file_struct{
   int id;
