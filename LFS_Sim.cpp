@@ -13,6 +13,7 @@ LFS_Sim::LFS_Sim(int diskSize, int segmentSize){
 	for(int i = 0; i < (int) log.size(); i++){
 		availableSegments.push(i);
 	}
+	//read/write head initially points to the left enf of the log
 	head = availableSegments.front();
 	availableSegments.pop();
 }
@@ -23,6 +24,7 @@ void LFS_Sim::simulate(std::string fileName){
                 std::cerr << "Cannot open file: " << fileName << std::endl;
                 exit(1);
         }
+	//Parsing input 
         std::string line, word;
         int fileID, blockID;
         while(std::getline(inFile, line)){
@@ -47,9 +49,10 @@ void LFS_Sim::simulate(std::string fileName){
                 }
         }
 	inFile.close();
-	//Temporary print statement
-		std::cout << "seek count: " << seekCount << "\nnumber of read: " << readCount << "\nnumber of write: " << writeCount << std::endl;
-		std::cout << "seek percentage: " << ((double) seekCount) / (readCount + writeCount) * 100 << "%" << std::endl;
+	std::cout << "*************Simulating " << fileName << "***************" << std::endl;
+	std::cout << "-------------Disk size: " << diskSize << ", segment size: " << segmentSize << "------------" << std::endl;
+	std::cout << "seek count: " << seekCount << "\nnumber of read: " << readCount << "\nnumber of write: " << writeCount << std::endl;
+	std::cout << "seek percentage: " << ((double) seekCount) / (readCount + writeCount) * 100 << "%" << std::endl;
 
 }
 
@@ -82,7 +85,7 @@ void LFS_Sim::clean(){
 		}
 		//disk is full with live blocks
 		if(victim == -1){
-			std::cerr << " Disk is full -- no empty/garbage blocks\n" << "this should not occur" << std::endl;
+			std::cerr << " Disk is full -- no empty/garbage blocks" << std::endl;
 			exit(1);
 		}
 
@@ -110,6 +113,8 @@ void LFS_Sim::clean(){
 		
 		
 }
+//For debugging 
+//Print the location of data blocks of each file
 void LFS_Sim::debug(){
 			for(auto it = files.begin(); it != files.end(); it++){
 				std::cerr << "file: " << it->first << " has data blocks in segments: ";
@@ -122,13 +127,14 @@ void LFS_Sim::debug(){
 //After file creation, an iNode is assign to the file
 void LFS_Sim::createFile(int fileID){
 	writeCount++;
+	//check if threshold is reached
 	if(requireClean())
 		clean();
 	
 	//Segment is full
 	if(log[head] <= 0){
 		if(!availableSegments.empty()){
-			//Move read/write head to the empty segment
+			//Move read/write head to the next empty segment
 			head = availableSegments.front();
 			availableSegments.pop();
 		}else{
@@ -137,11 +143,13 @@ void LFS_Sim::createFile(int fileID){
 		}
 	}
 	
+	//Update file info
 	fileInfo tmp;
 	tmp.dataBlockLocation.push_back(head);
 	
 	files.insert(std::pair<int, struct fileInfo>(fileID, tmp));
 	
+	//current segment has one less empty block
 	log[head]--;
 	
 	if(DEBUG) std::cerr << "after creatFile, head: " << head << ", log[head]: " << log[head] << std::endl;
@@ -156,6 +164,7 @@ void LFS_Sim::readFile(int fileID, int blockNumber){
 	std::map<int, struct fileInfo>::iterator it;
 		
 	//Error checking
+	//Make sure the file and the block of that file exist
 	it = files.find(fileID);
 	if(it == files.end()){
 		std::cerr << "Cannot read from file: " << fileID << ". File does not exist" << std::endl;
@@ -194,10 +203,13 @@ void LFS_Sim::writeFile(int fileID, int blockNumber){
 	
 	//Block already exists
 	if( (int)(it->second).dataBlockLocation.size() > blockNumber){
+		//update the segment that contain the block originally to be one more free block
        		log[(it->second).dataBlockLocation[blockNumber]]++;
+		//After increment the segment counter, if the segment is now empty, then add it to availableSegments
        		if(log[(it->second).dataBlockLocation[blockNumber]] == segmentSize){
 			availableSegments.push( (it->second).dataBlockLocation[blockNumber] );
 		}
+		//Update the file block so that it is now located at the end of the log
 		(it->second).dataBlockLocation[blockNumber] = head;
 	}
 	//Block not in disk
@@ -214,7 +226,7 @@ void LFS_Sim::writeFile(int fileID, int blockNumber){
 void LFS_Sim::removeFile(int fileID){
 	std::map<int, struct fileInfo>::iterator it;
 	it = files.find(fileID);
-	
+	//If after deletion, a segment becomes empty, then add it to availableSegments
 	for(int i = 0; i < (int) (it->second).dataBlockLocation.size(); i++){
 		log[(it->second).dataBlockLocation[i]]++;
 		if( !(log[(it->second).dataBlockLocation[i]] == head && log[head] == segmentSize)){

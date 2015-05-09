@@ -7,7 +7,7 @@
 #include <algorithm>
 #include <vector>
 
-#define DEBUG 0 // 1 to turn debug on
+#define DEBUG 1 // 1 to turn debug on
 
 typedef struct file_struct{
   int id;
@@ -161,6 +161,6 @@ int main(int argc, char **argv){
     aliveFiles.pop_back();
     outfile << end(new_fid) << std::endl;
   }
-  
+  outfile.close(); 
   return 0;
 }
